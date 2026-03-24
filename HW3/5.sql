@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS fracic.daily_event_activity
     user_count  UInt64 CODEC (T64)
 )
     ENGINE = MergeTree()
-        PARTITION BY event_date
+        PARTITION BY substring(event_date, 1, 6)
         ORDER BY (event_name, geo_country, platform)
         SETTINGS index_granularity = 8192;
 
@@ -102,7 +102,7 @@ CREATE TABLE IF NOT EXISTS fracic.monthly_event_activity
     user_count  UInt64 CODEC (T64)
 )
     ENGINE = MergeTree()
-        PARTITION BY event_date
+        PARTITION BY substring(event_date, 1, 6)
         ORDER BY (event_name, geo_country, platform)
         SETTINGS index_granularity = 8192;
 
