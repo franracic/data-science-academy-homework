@@ -1,0 +1,10 @@
+services:
+  import:
+    build: ./import
+    container_name: clickhouse_import
+    networks:
+      - hw4_default
+
+networks:
+  hw4_default:
+    external: true
